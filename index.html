@@ -8,10 +8,10 @@
   <body>
     <script>
       const REPO_URL = "https://robertbindar.github.io/";
-      const MANIFEST_FILE = "/push-notifications-api-demo/manifest.webapp";
+      const MANIFEST_FILE = "push-notifications-api-demo/manifest.webapp";
 
       function installPushDemo() {
-        navigator.mozApps.install(REPO_URL + this.id + MANIFEST_FILE);
+        navigator.mozApps.install(REPO_URL + MANIFEST_FILE);
       }
     </script>
 
