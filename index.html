@@ -6,5 +6,17 @@
     <title>robertbindar's projects</title>
   </head>
   <body>
+    <script>
+      const REPO_URL = "https://robertbindar.github.io/";
+      const MANIFEST_FILE = "/push-notifications-api-demo/manifest.webapp";
+
+      document.body.addEventListener("click", function(e) {
+          if (e.target.tagName !== "BUTTON") {
+              return;
+          }
+
+          navigator.mozApps.install(REPO_URL + e.target.id + MANIFEST_FILE);
+      }, true);
+    </script>
   </body>
 </html>
