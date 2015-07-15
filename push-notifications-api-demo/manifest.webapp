@@ -1,0 +1,15 @@
+{
+    "name": "Push-API",
+    "description": "Push notifications API demo",
+    "launch_path": "/index.html",
+    "developer": {
+        "name": "Robert Bindar",
+        "url": "https://github.com/robertbindar"
+    },
+    "icons": {
+        "512": "style/icons/icon-512.png",
+        "128": "style/icons/icon-128.png"
+    },
+    "orientation": "portrait-primary",
+    "default_locale": "en"
+}
