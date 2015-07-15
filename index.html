@@ -10,13 +10,14 @@
       const REPO_URL = "https://robertbindar.github.io/";
       const MANIFEST_FILE = "/push-notifications-api-demo/manifest.webapp";
 
-      document.body.addEventListener("click", function(e) {
-          if (e.target.tagName !== "BUTTON") {
-              return;
-          }
-
-          navigator.mozApps.install(REPO_URL + e.target.id + MANIFEST_FILE);
-      }, true);
+      function installPushDemo() {
+        navigator.mozApps.install(REPO_URL + this.id + MANIFEST_FILE);
+      }
     </script>
+
+    <button type="button" onclick="installPushDemo()">
+      Install Push API demo
+    </button>
+
   </body>
 </html>
