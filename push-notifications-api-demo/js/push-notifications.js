@@ -19,7 +19,7 @@ function registerWorker() {
 }
 
 function requestPermission() {
-    Notification.requestPermission(function() {
+    Notification.requestPermission(function(permission) {
         if (permission === "granted") {
             navigator.serviceWorker.ready.then(function(sw) {
                 var push_manager = sw.pushManager;
