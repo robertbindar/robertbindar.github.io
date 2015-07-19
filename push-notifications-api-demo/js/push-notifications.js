@@ -6,6 +6,7 @@ function registerWorker() {
             },
             function(err) {
                 console.log(err);
+                console.log(this.location.href);
             }
     );
 }
