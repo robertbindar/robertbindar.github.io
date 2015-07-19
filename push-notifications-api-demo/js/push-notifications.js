@@ -1,6 +1,6 @@
 
 function registerWorker() {
-    navigator.serviceWorker.register("/js/sw.js", {scope: "/js/"}).then(
+    navigator.serviceWorker.register("/push-notifications-api-demo/js/sw.js", {scope: "/push-notifications-api-demo/js/"}).then(
             function(sw) {
                 requestPermission();
             },
