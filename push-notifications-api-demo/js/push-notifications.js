@@ -1,14 +1,21 @@
 
 function registerWorker() {
-    navigator.serviceWorker.register("/push-notifications-api-demo/js/sw.js", {scope: "/push-notifications-api-demo/js/"}).then(
-            function(sw) {
+    navigator.serviceWorker.register("./push-notifications-api-demo/js/sw.js", {scope: "./push-notifications-api-demo/js/"}).then(
+            //function(sw) {
+                //requestPermission();
+            //},
+            //function(err) {
+                //console.log(err);
+                //console.log(this.location.href);
+            //}
+            function(registration) {
                 requestPermission();
-            },
-            function(err) {
-                console.log(err);
-                console.log(this.location.href);
+                console.log(registration);
             }
-    );
+    ).catch(function(err) {
+        console.log(err);
+        console.log(this.location.href);
+    });
 }
 
 function requestPermission() {
