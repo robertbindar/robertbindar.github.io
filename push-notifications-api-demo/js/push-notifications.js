@@ -19,7 +19,7 @@ function requestPermission() {
                     console.log(JSON.stringify(ps));
                     var endpoint = ps.endpoint;
                     console.log(endpoint);
-                }
+                });
             });
 
             return;
