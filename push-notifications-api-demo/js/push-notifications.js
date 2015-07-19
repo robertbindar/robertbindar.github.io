@@ -29,3 +29,6 @@ function requestPermission() {
     });
 }
 
+function sendNotificationToPushService() {
+    // TODO:
+}
