@@ -25,7 +25,7 @@ function requestPermission(swRegistration) {
             //navigator.serviceWorker.ready.then(function(sw) {
                 console.log("sw ready: " + swRegistration);
                 var push_manager = swRegistration.pushManager;
-                console.log("push_manager: " + push_mnager);
+                console.log("push_manager: " + push_manager);
                 push_manager.subscribe({userVisibileOnly: true}).then(function(ps) {
                     console.log(JSON.stringify(ps));
                     var endpoint = ps.endpoint;
