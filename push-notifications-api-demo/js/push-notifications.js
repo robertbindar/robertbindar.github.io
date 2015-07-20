@@ -22,7 +22,9 @@ function requestPermission() {
     Notification.requestPermission(function(permission) {
         if (permission === "granted") {
             navigator.serviceWorker.ready.then(function(sw) {
+                console.log("sw ready: " + sw);
                 var push_manager = sw.pushManager;
+                console.log("push_manager: " + push_mnager);
                 push_manager.subscribe({userVisibileOnly: true}).then(function(ps) {
                     console.log(JSON.stringify(ps));
                     var endpoint = ps.endpoint;
