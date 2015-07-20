@@ -67,11 +67,14 @@ function unsibscribeServiceWorker() {
     //});
 
     navigator.serviceWorker.ready.then(function(reg) {
-        reg.pushManager.getSubscription().then(function(successful) {
-            console.log("successfully unsubscribed");
-        }).catch(function(e) {
-            console.log("unsubscribe failed");
-            console.log(e);
+        reg.pushManager.getSubscription().then(function(subscription) {
+            console.log("calling unsubscribe");
+            subscription.unsubscribe().then(function(successful) {
+                console.log("successfully unsubscribed");
+            }) .catch(function(e) {
+                console.log("unsubscribe failed");
+                console.log(e);
+            });
         });
     });
 }
