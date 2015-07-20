@@ -44,7 +44,7 @@ function requestPermission(swRegistration) {
 function sendNotificationToPushService() {
     console.log("send Notification to push server");
     var data = new FormData();
-    data.append("version=5");
+    data.append("version", "5");
 
     var xhr = new XMLHttpRequest();
     xhr.onload = function() {
