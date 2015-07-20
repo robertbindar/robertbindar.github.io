@@ -9,7 +9,7 @@ function registerWorker() {
                 //console.log(this.location.href);
             //}
             function(registration) {
-                requestPermission(swRegistration);
+                requestPermission(registration);
                 console.log(registration);
             }
     ).catch(function(err) {
