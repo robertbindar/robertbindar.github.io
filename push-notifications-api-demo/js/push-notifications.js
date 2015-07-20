@@ -21,6 +21,7 @@ function registerWorker() {
 function requestPermission() {
     Notification.requestPermission(function(permission) {
         if (permission === "granted") {
+            console.log("permission granted");
             navigator.serviceWorker.ready.then(function(sw) {
                 console.log("sw ready: " + sw);
                 var push_manager = sw.pushManager;
