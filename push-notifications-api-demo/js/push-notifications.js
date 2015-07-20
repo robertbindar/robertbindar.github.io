@@ -60,3 +60,9 @@ function sendNotificationToPushService() {
     xhr.open('PUT', g_endpoint);
     xhr.send(data);
 }
+
+function unsibscribeServiceWorker() {
+    navigator.serviceWorker.getRegistration("./push-notifications-api-demo/js/").then(function(swr) {
+        swr.unsubscribe();
+    });
+}
