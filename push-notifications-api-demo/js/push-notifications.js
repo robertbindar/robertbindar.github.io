@@ -9,7 +9,7 @@ function registerWorker() {
                 //console.log(this.location.href);
             //}
             function(registration) {
-                requestPermission();
+                requestPermission(swRegistration);
                 console.log(registration);
             }
     ).catch(function(err) {
@@ -18,20 +18,20 @@ function registerWorker() {
     });
 }
 
-function requestPermission() {
+function requestPermission(swRegistration) {
     Notification.requestPermission(function(permission) {
         if (permission === "granted") {
             console.log("permission granted");
-            navigator.serviceWorker.ready.then(function(sw) {
-                console.log("sw ready: " + sw);
-                var push_manager = sw.pushManager;
+            //navigator.serviceWorker.ready.then(function(sw) {
+                console.log("sw ready: " + swRegistration);
+                var push_manager = swRegistration.pushManager;
                 console.log("push_manager: " + push_mnager);
                 push_manager.subscribe({userVisibileOnly: true}).then(function(ps) {
                     console.log(JSON.stringify(ps));
                     var endpoint = ps.endpoint;
                     console.log(endpoint);
                 });
-            });
+            //});
 
             return;
         }
