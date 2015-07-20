@@ -12,6 +12,7 @@ this.addEventListener("activate", function(evt) {
 });
 
 this.addEventListener('push', function(evt) {
+    console.log("worker: received push");
     var title = "new Notification";
     var options = {
         body: 'test body',
@@ -22,7 +23,7 @@ this.addEventListener('push', function(evt) {
 });
 
 this.addEventListener('notificationclick', function(evt) {
-    console.log("SW notificationclick");
+    console.log("worker: notificationclick");
     evt.notification.close();
 
     // Enumerate windows, and call window.focus(), or open a new one.
