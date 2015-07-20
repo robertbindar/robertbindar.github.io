@@ -62,16 +62,13 @@ function sendNotificationToPushService() {
 }
 
 function unsibscribeServiceWorker() {
-    //navigator.serviceWorker.getRegistration("./push-notifications-api-demo/js/").then(function(swr) {
-        //swr.unsubscribe();
-    //});
-
-    navigator.serviceWorker.ready.then(function(reg) {
+    navigator.serviceWorker.getRegistration("./push-notifications-api-demo/js/").then(function(reg) {
+        console.log("calling getSubscription()");
         reg.pushManager.getSubscription().then(function(subscription) {
             console.log("calling unsubscribe");
             subscription.unsubscribe().then(function(successful) {
                 console.log("successfully unsubscribed");
-            }) .catch(function(e) {
+            }).catch(function(e) {
                 console.log("unsubscribe failed");
                 console.log(e);
             });
