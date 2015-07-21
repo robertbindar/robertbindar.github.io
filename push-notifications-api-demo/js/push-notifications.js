@@ -2,12 +2,11 @@
 var g_endpoint;
 
 function registerWorker() {
-    navigator.serviceWorker.register("/push-notifications-api-demo/js/sw.js", {scope: "/push-notifications-api-demo/js/"}).then(
+    navigator.serviceWorker.register("./js/sw.js", {scope: "./js/"}).then(
             function(registration) {
                 requestPermission(registration);
                 console.log(registration);
-            }
-            ).catch(function(err) {
+            }).catch(function(err) {
                 console.log(err);
                 console.log(this.location.href);
             });
@@ -51,7 +50,7 @@ function sendNotificationToPushService() {
     xhr.onerror = function() {
         console.log("error while sending to push server endpoint");
     };
-    xhr.open('POST', "http://localhost:8080/");
+    xhr.open('POST', "https://swarm.cs.pub.ro:8080/~rbindar/robertbindar.github.io/push-notifications-api-demo/server");
     xhr.send(data);
 }
 
