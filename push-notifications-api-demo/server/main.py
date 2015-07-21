@@ -2,8 +2,19 @@ from BaseHTTPServer import BaseHTTPRequestHandler
 import urlparse
 import cgi
 import ssl
+import httplib
 
 g_endpoints = set()
+g_notification_version = 4443
+
+def sendNotification(endpoint):
+    global g_notification_version
+    connection = httplib.HTTPConnection(endpoint)
+    body = "version=" + str(g_notification_version)
+    g_notification_version = g_notification_version + 1
+    connection.request("PUT", "/". body)
+    response = connection.getresponse()
+    print response.status, response.reason
 
 class Handler(BaseHTTPRequestHandler):
 
@@ -38,6 +49,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         global g_endpoints
+        global g_notification_version
 
         # Parse the form data posted
         form = cgi.FieldStorage(
@@ -67,8 +79,7 @@ class Handler(BaseHTTPRequestHandler):
             if str(field) == "broadcastNotification":
                 print "backend: broadcast notification" + "\n",
                 for endpoint in g_endpoints:
-                    pass
-                    # TODO: send PUT to push sever
+                    sendNotification(endpoint)
 
             if field_item.filename:
                 # The field contains an uploaded file
