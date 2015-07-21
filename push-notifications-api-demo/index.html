@@ -6,7 +6,7 @@
     <title>Push Notifications demo</title>
 
     <link rel="stylesheet" type="text/css" href="style/push-notifications.css"/>
-    <script defer type="application/javascript" src="js/push-notifications.js"></script>
+    <script defer type="application/javascript" src="./js/push-notifications.js"></script>
   </head>
   <body role="application">
     <section role="region">
@@ -15,5 +15,17 @@
       </header>
 
     </section>
+
+    <button type="button" onclick="registerWorker()">
+      Register Worker
+    </button>
+
+    <button type="button" onclick="sendNotificationToPushService()">
+      Send Notification to Push Service
+    </button>
+
+    <button type="button" onclick="unsibscribeServiceWorker()">
+      Unsubscribe From Push
+    </button>
   </body>
 </html>

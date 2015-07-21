@@ -2,22 +2,15 @@
 var g_endpoint;
 
 function registerWorker() {
-    navigator.serviceWorker.register("./push-notifications-api-demo/js/sw.js", {scope: "./push-notifications-api-demo/js/"}).then(
-            //function(sw) {
-                //requestPermission();
-            //},
-            //function(err) {
-                //console.log(err);
-                //console.log(this.location.href);
-            //}
+    navigator.serviceWorker.register("/push-notifications-api-demo/js/sw.js", {scope: "/push-notifications-api-demo/js/"}).then(
             function(registration) {
                 requestPermission(registration);
                 console.log(registration);
             }
-    ).catch(function(err) {
-        console.log(err);
-        console.log(this.location.href);
-    });
+            ).catch(function(err) {
+                console.log(err);
+                console.log(this.location.href);
+            });
 }
 
 function requestPermission(swRegistration) {
@@ -62,7 +55,7 @@ function sendNotificationToPushService() {
 }
 
 function unsibscribeServiceWorker() {
-    navigator.serviceWorker.getRegistration("./push-notifications-api-demo/js/").then(function(reg) {
+    navigator.serviceWorker.getRegistration("/push-notifications-api-demo/js/").then(function(reg) {
         console.log("calling getSubscription()");
         reg.pushManager.getSubscription().then(function(subscription) {
             console.log("calling unsubscribe");
