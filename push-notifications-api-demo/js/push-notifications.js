@@ -73,8 +73,8 @@ function sendNotificationToPushService() {
     xhr.send(data);
 }
 
-function unsibscribeServiceWorker() {
-    navigator.serviceWorker.getRegistration("/push-notifications-api-demo/js/").then(function(reg) {
+function unsubscribeServiceWorker() {
+    navigator.serviceWorker.getRegistration("./js/").then(function(reg) {
         console.log("calling getSubscription()");
         reg.pushManager.getSubscription().then(function(subscription) {
             console.log("calling unsubscribe");
