@@ -3,6 +3,8 @@ import urlparse
 import cgi
 import ssl
 
+g_endpoints = set()
+
 class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -35,6 +37,8 @@ class Handler(BaseHTTPRequestHandler):
         return
 
     def do_POST(self):
+        global g_endpoints
+
         # Parse the form data posted
         form = cgi.FieldStorage(
             fp=self.rfile, 
@@ -55,6 +59,16 @@ class Handler(BaseHTTPRequestHandler):
         # Echo back information about what was posted in the form
         for field in form.keys():
             field_item = form[field]
+            if str(field) == "endpoint":
+                print "backend: endpoint - " + str(field) + "\n",
+                g_endpoints.add(str(form[field]))
+
+            if str(field) == "brodcastNotification":
+                print "backend: broadcast notification" + "\n",
+                for endpoint in g_endpoints:
+                    pass
+                    # TODO: send PUT to push sever
+
             if field_item.filename:
                 # The field contains an uploaded file
                 file_data = field_item.file.read()
@@ -71,6 +85,6 @@ if __name__ == '__main__':
     from BaseHTTPServer import HTTPServer
     server = HTTPServer(('', 4443), Handler)
     print 'Starting server, use <Ctrl-C> to stop'
-    server.socket = ssl.wrap_socket(server.socket, certfile='./server.pem', server_side=True)
+    #server.socket = ssl.wrap_socket(server.socket, certfile='./server.pem', server_side=True)
     server.serve_forever()
 

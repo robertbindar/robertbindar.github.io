@@ -1,5 +1,5 @@
 
-var g_endpoint;
+var BACKEND_SERVER = "http://swarm.cs.pub.ro:4443/~rbindar/robertbindar.github.io/push-notifications-api-demo/server";
 
 function registerWorker() {
     navigator.serviceWorker.register("./js/sw.js", {scope: "./js/"}).then(
@@ -20,11 +20,9 @@ function requestPermission(swRegistration) {
             var push_manager = swRegistration.pushManager;
             console.log("push_manager: " + push_manager);
             push_manager.subscribe({userVisibileOnly: true}).then(function(ps) {
-                console.log(JSON.stringify(ps));
-                g_endpoint = ps.endpoint;
-                console.log(g_endpoint);
-                // TODO: send {user: endpoint mapping}
+                console.log(ps.endpoint);
 
+                postEndpointToServer(ps.endpoint);
             });
 
             return;
@@ -34,23 +32,44 @@ function requestPermission(swRegistration) {
     });
 }
 
-function sendNotificationToPushService() {
-    console.log("send Notification to push server");
+function postEndpointToServer(endpoint) {
+    console.log("sending endpoint server");
     var data = new FormData();
-    data.append("version", "5");
+    data.append("endpoint", endpoint);
 
     var xhr = new XMLHttpRequest();
     xhr.onload = function() {
         if (xhr.status === 200) {
-            console.log("notification was successfully send");
+            console.log("successfully sent the endpoint");
         } else {
-            console.log("received error from push server");
+            console.log("received error from server");
         }
     };
     xhr.onerror = function() {
-        console.log("error while sending to push server endpoint");
+        console.log("error while sending endpoint to backend");
     };
-    xhr.open('POST', "https://swarm.cs.pub.ro:4443/~rbindar/robertbindar.github.io/push-notifications-api-demo/server");
+    xhr.open('POST', BACKEND_SERVER);
+    xhr.send(data);
+
+}
+
+function sendNotificationToPushService() {
+    console.log("send Notification to push server");
+    var data = new FormData();
+    data.append("broadcastNotification", "");
+
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log("notification was successfully sent");
+        } else {
+            console.log("received error from server");
+        }
+    };
+    xhr.onerror = function() {
+        console.log("error while sending broadcastNotification to server");
+    };
+    xhr.open('POST', BACKEND_SERVER);
     xhr.send(data);
 }
 
