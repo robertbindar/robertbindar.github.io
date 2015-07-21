@@ -24,6 +24,7 @@ function requestPermission(swRegistration) {
                 console.log(JSON.stringify(ps));
                 g_endpoint = ps.endpoint;
                 console.log(g_endpoint);
+                // TODO: send {user: endpoint mapping}
 
             });
 
@@ -50,7 +51,7 @@ function sendNotificationToPushService() {
     xhr.onerror = function() {
         console.log("error while sending to push server endpoint");
     };
-    xhr.open('PUT', g_endpoint);
+    xhr.open('POST', "http://localhost:8080/");
     xhr.send(data);
 }
 
