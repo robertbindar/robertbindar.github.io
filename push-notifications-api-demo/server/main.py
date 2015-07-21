@@ -9,7 +9,8 @@ g_notification_version = 4443
 
 def sendNotification(endpoint):
     global g_notification_version
-    connection = httplib.HTTPSConnection(endpoint)
+    print endpoint, "\n",
+    connection = httplib.HTTPSConnection(endpoint, 443)
     body = "version=" + str(g_notification_version)
     g_notification_version = g_notification_version + 1
     connection.request("PUT", "/", body)
