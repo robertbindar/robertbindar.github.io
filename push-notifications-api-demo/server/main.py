@@ -29,6 +29,7 @@ class Handler(BaseHTTPRequestHandler):
         message_parts.append('')
         message = '\r\n'.join(message_parts)
         self.send_response(200)
+        self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write(message)
         return
@@ -44,6 +45,7 @@ class Handler(BaseHTTPRequestHandler):
 
         # Begin the response
         self.send_response(200)
+        self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write('Client: %s\n' % str(self.client_address))
         self.wfile.write('User-agent: %s\n' % str(self.headers['user-agent']))
@@ -67,7 +69,7 @@ class Handler(BaseHTTPRequestHandler):
 
 if __name__ == '__main__':
     from BaseHTTPServer import HTTPServer
-    server = HTTPServer(('', 443), Handler)
+    server = HTTPServer(('', 4443), Handler)
     print 'Starting server, use <Ctrl-C> to stop'
     server.socket = ssl.wrap_socket(server.socket, certfile='./server.pem', server_side=True)
     server.serve_forever()
