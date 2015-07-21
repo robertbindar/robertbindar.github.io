@@ -67,8 +67,8 @@ class Handler(BaseHTTPRequestHandler):
 
 if __name__ == '__main__':
     from BaseHTTPServer import HTTPServer
-    server = HTTPServer(('', 8080), Handler)
+    server = HTTPServer(('', 443), Handler)
     print 'Starting server, use <Ctrl-C> to stop'
-    server.socket = ssl.wrap_socket(server.socket, certfile='https://swarm.cs.pub.ro:8080/~rbindar/robertbindar.github.io/push-notifications-api-demo/server/server.pem', server_side=True)
+    server.socket = ssl.wrap_socket(server.socket, certfile='./server.pem', server_side=True)
     server.serve_forever()
 
