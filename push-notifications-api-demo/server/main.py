@@ -60,8 +60,9 @@ class Handler(BaseHTTPRequestHandler):
         for field in form.keys():
             field_item = form[field]
             if str(field) == "endpoint":
-                print "backend: endpoint - " + str(field) + "\n",
+                print "backend: endpoint - " + str(form[field]) + "\n",
                 g_endpoints.add(str(form[field]))
+                print str(g_endpoints) + "\n",
 
             if str(field) == "brodcastNotification":
                 print "backend: broadcast notification" + "\n",
