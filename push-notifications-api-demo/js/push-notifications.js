@@ -50,7 +50,7 @@ function sendNotificationToPushService() {
     xhr.onerror = function() {
         console.log("error while sending to push server endpoint");
     };
-    xhr.open('POST', "http://swarm.cs.pub.ro:8080/~rbindar/robertbindar.github.io/push-notifications-api-demo/server");
+    xhr.open('POST', "https://swarm.cs.pub.ro:8080/~rbindar/robertbindar.github.io/push-notifications-api-demo/server");
     xhr.send(data);
 }
 
