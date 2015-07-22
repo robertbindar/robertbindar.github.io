@@ -1,7 +1,7 @@
 {
     "name": "Push-API",
     "description": "Push notifications API demo",
-    "launch_path": "./push-notifications-api-demo/index.html",
+    "launch_path": "./index.html",
     "developer": {
         "name": "Robert Bindar",
         "url": "https://github.com/robertbindar"
