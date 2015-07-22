@@ -11,5 +11,9 @@
         "128": "style/icons/icon-128.png"
     },
     "orientation": "portrait-primary",
-    "default_locale": "en"
+    "default_locale": "en",
+    "desktop-notification": {
+        "description": "Needed for creating system notifications."
+    }
+}
 }
