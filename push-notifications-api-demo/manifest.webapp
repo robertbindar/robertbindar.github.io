@@ -12,8 +12,9 @@
     },
     "orientation": "portrait-primary",
     "default_locale": "en",
-    "desktop-notification": {
-        "description": "Needed for creating system notifications."
+    "permissions": {
+        "desktop-notification": {
+            "description": "Needed for creating system notifications."
+        }
     }
-}
 }
