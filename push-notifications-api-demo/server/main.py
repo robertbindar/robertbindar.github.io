@@ -10,13 +10,8 @@ g_notification_version = 4443
 
 def sendNotification(endpoint):
     global g_notification_version
-    #print endpoint, "\n",
-    #connection = httplib.HTTPSConnection(endpoint, 443)
     body = "version=" + str(g_notification_version)
     g_notification_version = g_notification_version + 1
-    #connection.request("PUT", "/", body)
-    #response = connection.getresponse()
-    #print response.status, response.reason
     cmd = '''curl -X PUT -d 'version=%d' %s''' %(g_notification_version, endpoint)
     args = cmd.split()
     process = subprocess.Popen(args, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -103,6 +98,5 @@ if __name__ == '__main__':
     from BaseHTTPServer import HTTPServer
     server = HTTPServer(('', 4443), Handler)
     print 'Starting server, use <Ctrl-C> to stop'
-    #server.socket = ssl.wrap_socket(server.socket, certfile='./server.pem', server_side=True)
     server.serve_forever()
 
