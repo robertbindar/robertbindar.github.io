@@ -23,6 +23,9 @@ function requestPermission(swRegistration) {
                 console.log(ps.endpoint);
 
                 postEndpointToServer(ps.endpoint);
+            }).catch(function(e) {
+                console.log("subscribe error");
+                console.log(e);
             });
 
             return;
