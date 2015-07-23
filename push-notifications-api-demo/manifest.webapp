@@ -12,9 +12,16 @@
     },
     "orientation": "portrait-primary",
     "default_locale": "en",
+    "messages": [
+       { "push": "./index.html"},
+       { "push-register": "./index.html"}
+    ],
     "permissions": {
         "desktop-notification": {
             "description": "Needed for creating system notifications."
+        },
+        "push": {
+            "description": "Required for updates"
         }
     }
 }
