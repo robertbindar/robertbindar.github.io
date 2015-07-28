@@ -13,8 +13,9 @@
     "orientation": "portrait-primary",
     "default_locale": "en",
     "messages": [
-       { "push": "./index.html"},
-       { "push-register": "./index.html"}
+       { "push": "./index.html" },
+       { "push-register": "./index.html" },
+       { "notification": "./index.html" }
     ],
     "permissions": {
         "desktop-notification": {
