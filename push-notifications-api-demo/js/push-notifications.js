@@ -2,7 +2,7 @@
 var BACKEND_SERVER = "http://swarm.cs.pub.ro:4443/~rbindar/robertbindar.github.io/push-notifications-api-demo/server";
 
 function registerWorker() {
-    navigator.serviceWorker.register("./js/sw.js", {scope: "./"}).then(
+    navigator.serviceWorker.register("./sw.js", {scope: "./"}).then(
             function(registration) {
                 requestPermission(registration);
                 console.log(registration);
