@@ -1,5 +1,5 @@
 
-var BACKEND_SERVER = "http://swarm.cs.pub.ro:4443/~rbindar/robertbindar.github.io/push-notifications-api-demo/server";
+var BACKEND_SERVER = "http://10.251.26.84:8080/";
 
 function registerWorker() {
     navigator.serviceWorker.register("./sw.js", {scope: "./"}).then(
