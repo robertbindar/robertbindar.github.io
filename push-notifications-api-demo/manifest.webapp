@@ -7,7 +7,7 @@
         "url": "https://github.com/robertbindar"
     },
     "icons": {
-        "512": "./icons/notification.ico",
+        "512": "./icons/notification.ico"
     },
     "orientation": "portrait-primary",
     "default_locale": "en",
