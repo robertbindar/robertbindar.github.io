@@ -1,5 +1,5 @@
 
-var BACKEND_SERVER = "http://10.251.29.65:8080/";
+var BACKEND_SERVER = "http://10.251.38.188:8080/";
 
 function registerWorker() {
     navigator.serviceWorker.register("./sw.js", {scope: "./"}).then(
